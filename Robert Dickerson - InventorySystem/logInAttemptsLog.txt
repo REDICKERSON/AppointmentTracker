@@ -1,0 +1,23 @@
+2022-01-26, 23:15:00  - UserID: 1, UserName: test, has successfully logged in.
+2022-01-28, 18:21:13  - UserID: 1, UserName: test, has successfully logged in.
+2022-01-28, 23:20:05  - UserID: 1, UserName: test, has successfully logged in.
+2022-01-28, 23:25:08  - UserID: 1, UserName: test, has successfully logged in.
+2022-01-28, 23:26:19  - UserID: 1, UserName: test, has successfully logged in.
+2022-01-28, 23:28:36  - UserID: 1, UserName: test, has successfully logged in.
+2022-01-29, 23:34:02  - UserID: 1, UserName: test, has successfully logged in.
+2022-01-29, 23:46:10  - UserID: 1, UserName: test, has successfully logged in.
+2022-01-30, 00:04:12  - UserID: 1, UserName: test, has successfully logged in.
+2022-01-30, 00:21:51  - UserID: 1, UserName: test, has successfully logged in.
+2022-01-30, 00:25:26  - UserID: 1, UserName: test, has successfully logged in.
+2022-01-30, 00:31:36  - UserID: 1, UserName: test, has successfully logged in.
+2022-01-30, 17:01:51  - UserID: 1, UserName: test, has successfully logged in.
+2022-01-30, 17:41:04  - UserID: 1, UserName: test, has successfully logged in.
+2022-01-30, 17:47:10  - UserID: 1, UserName: test, has successfully logged in.
+2022-01-30, 17:49:32  - UserID: 1, UserName: test, has successfully logged in.
+2022-01-30, 17:51:58  - UserID: 1, UserName: test, has successfully logged in.
+2022-02-01, 22:48:40  - UserID: 1, UserName: test, has successfully logged in.
+2022-02-05, 03:23:20  - UserID: 1, UserName: test, has successfully logged in.
+2022-04-19, 19:48:30  - There was a failed attempt to login for the UserName: 'admin' !
+2022-04-19, 19:48:35  - UserID: 1, UserName: test, has successfully logged in.
+2022-04-20, 10:59:16  - UserID: 1, UserName: test, has successfully logged in.
+2022-05-26, 20:52:47  - UserID: 1, UserName: test, has successfully logged in.

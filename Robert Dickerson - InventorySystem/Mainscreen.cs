@@ -45,13 +45,8 @@ namespace Robert_Dickerson___InventorySystem
         public Mainscreen()
         {
             InitializeComponent();
-
-            /*DBDGV1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DBDGV1.DefaultCellStyle.SelectionBackColor = DBDGV1.DefaultCellStyle.BackColor;
-            DBDGV1.DefaultCellStyle.SelectionForeColor = DBDGV1.DefaultCellStyle.ForeColor;*/
-            allActiveApptViewRB = allActiveAptsRB;
-            /*//cleaning up the DB from test cases
-            CleanTheDB(); */           
+            
+            allActiveApptViewRB = allActiveAptsRB;                  
 
             //DBDGV1 setup
             string connectionString = ConfigurationManager.ConnectionStrings[dbName].ConnectionString;
@@ -90,7 +85,7 @@ namespace Robert_Dickerson___InventorySystem
 
             Mainscreen.dataTable2 = new DataTable();
             Mainscreen.dataTable2.Load(cmdToMySQL2.ExecuteReader());
-            /*Mainscreen.adapterToMySQL.Fill(Mainscreen.dataTable2);*/
+            
             dataGridView2 = DBDGV2;
             Mainscreen.dataGridView2.DataSource = Mainscreen.dataTable2;
 
@@ -105,20 +100,12 @@ namespace Robert_Dickerson___InventorySystem
 
             conToMySQL2.Close();
 
-            //this starts the calendar with the current day selected
-            /*processDaySelect();*/
-
-            /*for (int i = 0; i < dataTable.Rows.Count; i++)
-            {
-                dataTable.Rows[i]["customerId"] = currentCustomerID;
-                
-            }*/
-
+            
+           
         }
-        
-        private void CleanTheDB() 
-        {
-            //this will delete any test runs made while testing
+        //this starts the calendar with the current day selected
+        private void CleanTheDB() //this will delete any test runs made while testing
+        {           
 
             string connectionString3 = ConfigurationManager.ConnectionStrings[dbName].ConnectionString;
 
@@ -210,30 +197,7 @@ namespace Robert_Dickerson___InventorySystem
             return (timeDifference.TotalSeconds > -1 && timeDifference.TotalSeconds < 0) // this gives a time difference tolerance up to one sec before
                    || (timeDifference.TotalSeconds >= 0 && Math.Floor(timeDifference.TotalSeconds) <= timeWindowInMinutes * 60); // this gives a time difference tolerance within 15 minutes
         }
-
-
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-      
-        private void button8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            //
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-
-        }
+        
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             currentIndex = DBDGV1.CurrentCell.RowIndex;
@@ -244,22 +208,10 @@ namespace Robert_Dickerson___InventorySystem
 
         }
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-            /*currentCustomerIndex = DBDGV2.CurrentCell.RowIndex;*/
+        {            
             currentCustomerIndex = DBDGV2.CurrentCell.RowIndex;
             currentAppointmentID = dataTable2.Rows[currentCustomerIndex]["appointmentId"].ToString();
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
+        }        
 
         private void button7_Click(object sender, EventArgs e)
         {
@@ -268,12 +220,10 @@ namespace Robert_Dickerson___InventorySystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             AddCustomer addCustomer = new AddCustomer();
             addCustomer.Show();
             customerSearchEntry.Text = "";
             refreshDBDGV1();
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -293,11 +243,7 @@ namespace Robert_Dickerson___InventorySystem
                 button2.Enabled = false;
                 MessageBox.Show("Please select a customer to modify.");
                 button2.Enabled = true;
-
             }
-
-
-
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -348,7 +294,6 @@ namespace Robert_Dickerson___InventorySystem
                     {
                         dataGridView.ClearSelection();
                     }
-
                 }
             }
             else
@@ -358,8 +303,7 @@ namespace Robert_Dickerson___InventorySystem
             }
 
             dataGridView.ClearSelection();
-        }
-        
+        }        
 
         private void button9_Click(object sender, EventArgs e)
         {
@@ -367,27 +311,15 @@ namespace Robert_Dickerson___InventorySystem
             refreshDBDGV2();
             /*Product.TempModList = new BindingList<Part>();*/
             AddAppointment addAppointment = new AddAppointment();
-            addAppointment.Show();
-            
-            
+            addAppointment.Show(); 
 
         }
+        
         //this is the modify button
         private void button6_Click(object sender, EventArgs e)
         {
             if ((Mainscreen.dataGridView2.SelectedRows.Count != 0) && (currentCustomerIndex >= 0))
             {
-                /*//this will connect to the DB and begin the Delete statment
-                string dbName = "Robert_Dickerson___InventorySystem.Properties.Settings.client_scheduleConnectionString";
-
-                string connectionString = ConfigurationManager.ConnectionStrings[dbName].ConnectionString;
-                MySqlConnection conForDelete = new MySqlConnection(connectionString);
-
-                conForDelete.Open();
-                MySqlCommand cmdForDelete = new MySqlCommand($"DELETE FROM appointment WHERE appointmentId = '{Mainscreen.currentAppointmentID}'", conForDelete);
-                cmdForDelete.ExecuteNonQuery();
-                conForDelete.Close();*/
-
                 button6.Enabled = true;
                 ModAppt modifyAppointment = new ModAppt();
                 modifyAppointment.Show();
@@ -403,37 +335,9 @@ namespace Robert_Dickerson___InventorySystem
                 MessageBox.Show("Please select an appointment to modify.");
                 button6.Enabled = true;
                 dataGridView2.Refresh();
-
             }
-
-
         }
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dataGridView2_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
-        private void dataGridView1_CellContentClick_3(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
-        private void dataGridView2_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
+        
         private void button5_Click(object sender, EventArgs e)
         {
             if (DBDGV2.SelectedRows.Count != 0)
@@ -486,7 +390,6 @@ namespace Robert_Dickerson___InventorySystem
                     {
                         //this should just do nothing
                     }
-
                 }
             }
             else
@@ -503,34 +406,11 @@ namespace Robert_Dickerson___InventorySystem
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void button8_Click_1(object sender, EventArgs e)
-        {
+        {                      
+            DBDGV1.ClearSelection();           
            
-            
-            DBDGV1.ClearSelection();
-            
-            /*bool found = false;*/
-
-            /*if (textBox1.Text != "") 
-            {
-                for (int i = 0; i < Inventory.AllParts.Count; i++)
-                {
-                    if (Inventory.AllParts[i].Name.ToUpper().Contains(textBox1.Text.ToUpper()) || Inventory.AllParts[i].PartID.ToString().Contains(textBox1.Text))
-                    {
-                        DBDVG1.Rows[i].Selected = true;
-                        found = true;
-                    }
-
-                }
-
-            }
-            if (!found)
-            {
-                MessageBox.Show("Nothing found!");
-            }*/
-
-
-
         }
+        
         /// <summary>
         /// Product Search Button
         /// </summary>
@@ -539,40 +419,13 @@ namespace Robert_Dickerson___InventorySystem
         private void button4_Click(object sender, EventArgs e)
         {
             DBDGV2.ClearSelection();
-
-            /*bool found = false;
-
-            if (textBox2.Text != "")
-            {
-                for (int i = 0; i < Inventory.Products.Count; i++)
-                {
-                    if (Inventory.Products[i].Name.ToUpper().Contains(textBox2.Text.ToUpper()) || Inventory.Products[i].ProductID.ToString().Contains(textBox2.Text))
-                    {
-                        dataGridView2.Rows[i].Selected = true;
-                        found = true;
-                    }
-
-                }
-            }
-            if (!found)
-            {
-                MessageBox.Show("Nothing found!");
-            }*/
         }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cal_DateChanged(object sender, DateRangeEventArgs e)
-        {
-
-        }
+        
         public string CreateDATE()
         {
             return DateTime.Now.ToString("yyyy-MM-dd, HH:mm:ss");
         }
+        
         private void monthlyApptViewRB_CheckedChanged(object sender, EventArgs e)
         {
             cal.RemoveAllBoldedDates();
@@ -645,44 +498,10 @@ namespace Robert_Dickerson___InventorySystem
             }
 
             dataGridView2.ClearSelection();
-        }
+            }
 
+        }
         
-        /*private void processDaySelect()
-        {
-            cal.RemoveAllBoldedDates();
-            cal.AddBoldedDate(currentDate);
-            cal.UpdateBoldedDates();
-            dataTable2.Clear();
-            processSelectStatementDGV2($"SELECT * FROM appointment WHERE start = '{currentDate}';");
-            dataGridView2 = DBDGV2;
-            dataGridView2.DataSource = dataTable2;
-        }*/
-
-        /*private void determineTheDateSelected(object sender, DateRangeEventArgs e)
-        {
-            currentDate = e.Start;
-            if (monthlyApptViewRB.Checked)
-            {
-                processMonthSelect();
-            }
-            else
-            {
-                if (weeklyApptViewRB.Checked)
-                {
-                    processWeekSelect();
-                }
-                else
-                {
-                    processDaySelect();
-                }
-            }
-        }*/
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
         public static void refreshDBDGV2()
         {
             string connectionString2 = ConfigurationManager.ConnectionStrings[dbName].ConnectionString;
@@ -696,7 +515,6 @@ namespace Robert_Dickerson___InventorySystem
             dataTable2.Load(cmdToMySQL2.ExecuteReader());
             
             dataGridView2.DataSource = dataTable2;
-
 
 
             //this will convert the UTC times in the database back into local times for datagridview2 on save
@@ -725,7 +543,6 @@ namespace Robert_Dickerson___InventorySystem
             dataTable.Load(cmdToMySQL2.ExecuteReader());
 
             dataGridView.DataSource = dataTable;
-
 
 
             //this will convert the UTC times in the database back into local times for datagridview2 on save
@@ -818,46 +635,6 @@ namespace Robert_Dickerson___InventorySystem
                     refreshDBDGV1();
                     found = false;
                 }
-
-
-
-
-                /* for (int i = 0; i < customerSearchDataTable.Rows.Count; i++)
-                 {
-                    var tempCustomerName = customerSearchDataTable.Rows[i]["customerName"];
-                    var tempCustomerId = customerSearchDataTable.Rows[i]["customerId"];
-
-                     if (tempCustomerName.ToString().ToUpper().Contains(customerSearchEntry.Text.ToUpper())*//* || tempCustomerId.ToString().Contains(customerSearchBTN.Text)*//*)
-                     {
-                         DBDGV1.DataSource = customerSearchDataTable.Rows[i];
-                         *//*DBDGV1.Rows[i].Selected = true;*//*
-                         found = true;
-                     }                    
-                 }*/
-
-
-                /*DBDGV2.ClearSelection();*/
-
-                /*bool found = false;
-
-                if (textBox2.Text != "")
-                {
-                    for (int i = 0; i < Inventory.Products.Count; i++)
-                    {
-                        if (Inventory.Products[i].Name.ToUpper().Contains(textBox2.Text.ToUpper()) || Inventory.Products[i].ProductID.ToString().Contains(textBox2.Text))
-                        {
-                            dataGridView2.Rows[i].Selected = true;
-                            found = true;
-                        }
-
-                    }
-                }
-                if (!found)
-                {
-                    MessageBox.Show("Nothing found!");
-                }
-                dataGridView2.DataSource = dataTable2;*/
-
             }
             else
             {                
